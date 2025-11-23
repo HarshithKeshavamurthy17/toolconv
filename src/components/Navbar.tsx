@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -30,9 +31,9 @@ export function Navbar() {
                 }`}
         >
             <div className="container mx-auto px-4 flex items-center justify-between">
-                <a href="#" className="text-2xl font-bold tracking-tighter hover:text-cyan-400 transition-colors">
+                <Link to="/" className="text-2xl font-bold tracking-tighter hover:text-cyan-400 transition-colors">
                     HK<span className="text-cyan-400">.</span>
-                </a>
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
