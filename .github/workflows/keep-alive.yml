@@ -6,22 +6,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  ping:
+  aggressive-wake-up:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Apps
-        run: |
-          urls=(
-            "https://lexguard-app.streamlit.app/"
-            "https://f1-win-predictor-app.streamlit.app/"
-            "https://autokpi-hk-app.streamlit.app/"
-            "https://oncovision-akj8dwacntroekz8qxa7gs.streamlit.app/"
-          )
-          
-          for url in "${urls[@]}"; do
-            echo "Pinging $url..."
-            # Use User-Agent to mimic a browser and follow redirects (-L)
-            curl -L -s -o /dev/null -w "%{http_code}\n" \
-              -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
-              "$url"
-          done
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Puppeteer
+        run: npm install puppeteer
+
+      - name: Run Aggressive Wake-Up Script
+        run: node scripts/wake_up.js
