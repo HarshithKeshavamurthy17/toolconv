@@ -72,6 +72,17 @@ export default function ProjectAutoKPI() {
                   </span>
                 ))}
               </div>
+              <div className="pt-4">
+                <a
+                  href="https://autokpi-hk-app.streamlit.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-purple-700 transition-all hover:scale-105 shadow-lg shadow-purple-600/25"
+                >
+                  <Zap className="size-4" />
+                  Try Live Demo
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -606,7 +617,7 @@ export default function ProjectAutoKPI() {
           </h2>
           <div className="bg-white/5 rounded-lg p-6 overflow-x-auto">
             <pre className="text-sm text-neutral-300 font-mono whitespace-pre-wrap">
-{`User Uploads Dataset
+              {`User Uploads Dataset
 (CSV, Excel)
 
     ↓
@@ -885,6 +896,26 @@ Streamlit Web Application
           <p className="text-xs text-neutral-500 leading-relaxed">
             This project showcases end-to-end data analytics automation: from automatic schema inference and data quality assessment through KPI generation, visualization, and export. It demonstrates how comprehensive features, beautiful UI design, and production-ready deployment combine to create a powerful, accessible analytics tool that transforms any dataset into actionable insights.
           </p>
+          <div className="mt-6 flex justify-center gap-4">
+            <a
+              href="https://autokpi-hk-app.streamlit.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-sm font-bold text-white hover:bg-purple-700 transition-colors shadow-lg shadow-purple-600/25"
+            >
+              <Zap className="size-4" />
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/HarshithKeshavamurthy17/AutoKPI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2 text-sm font-semibold text-black hover:bg-gray-200 transition-colors"
+            >
+              <Code className="size-4" />
+              View Source
+            </a>
+          </div>
         </motion.div>
       </div>
     </div>

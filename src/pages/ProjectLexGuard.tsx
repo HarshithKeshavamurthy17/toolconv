@@ -46,6 +46,17 @@ export default function ProjectLexGuard() {
                                     </span>
                                 ))}
                             </div>
+                            <div className="pt-4">
+                                <a
+                                    href="https://lexguard-app.streamlit.app/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 rounded-full bg-blue-500 px-6 py-2.5 text-sm font-bold text-white hover:bg-blue-600 transition-all hover:scale-105 shadow-lg shadow-blue-500/25"
+                                >
+                                    <Zap className="size-4" />
+                                    Try Live Demo
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
@@ -290,7 +301,16 @@ export default function ProjectLexGuard() {
                     </p>
                     <div className="mt-4 flex justify-center gap-4">
                         <a
-                            href="https://github.com/HarshithKeshavamurthy17/LexGuard"
+                            href="https://lexguard-app.streamlit.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full bg-blue-500 px-6 py-2 text-sm font-bold text-white hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25"
+                        >
+                            <Zap className="size-4" />
+                            Live Demo
+                        </a>
+                        <a
+                            href="https://github.com/HarshithKeshavamurthy17/lexguard"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2 text-sm font-semibold text-black hover:bg-gray-200 transition-colors"

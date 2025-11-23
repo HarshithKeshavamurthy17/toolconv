@@ -63,6 +63,17 @@ export default function ProjectOncoVision() {
                   </span>
                 ))}
               </div>
+              <div className="pt-4">
+                <a
+                  href="https://oncovision-akj8dwacntroekz8qxa7gs.streamlit.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-purple-700 transition-all hover:scale-105 shadow-lg shadow-purple-600/25"
+                >
+                  <Zap className="size-4" />
+                  Try Live Demo
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -465,7 +476,7 @@ export default function ProjectOncoVision() {
           </h2>
           <div className="bg-white/5 rounded-lg p-6 overflow-x-auto">
             <pre className="text-sm text-neutral-300 font-mono whitespace-pre-wrap">
-{`BUSI Dataset
+              {`BUSI Dataset
 624 image-mask pairs
 (355 benign, 167 malignant, 102 normal)
 
@@ -759,6 +770,26 @@ Streamlit Web App
           <p className="text-xs text-neutral-600 mt-4 italic">
             Note: This project is for educational purposes and is not intended for clinical use. Medical diagnosis should always be performed by qualified healthcare professionals.
           </p>
+          <div className="mt-6 flex justify-center gap-4">
+            <a
+              href="https://oncovision-akj8dwacntroekz8qxa7gs.streamlit.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-sm font-bold text-white hover:bg-purple-700 transition-colors shadow-lg shadow-purple-600/25"
+            >
+              <Zap className="size-4" />
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/HarshithKeshavamurthy17/OncoVision"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2 text-sm font-semibold text-black hover:bg-gray-200 transition-colors"
+            >
+              <Code className="size-4" />
+              View Source
+            </a>
+          </div>
         </motion.div>
       </div>
     </div>
