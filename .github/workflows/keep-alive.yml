@@ -16,9 +16,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
-      - name: Install Puppeteer
-        run: npm install puppeteer
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgbm-dev libasound2 libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libgdk-pixbuf2.0-0
+
+      - name: Install Project Dependencies
+        run: npm install
 
       - name: Run Aggressive Wake-Up Script
-        run: node scripts/wake_up.js
+        run: npm run wake-up
