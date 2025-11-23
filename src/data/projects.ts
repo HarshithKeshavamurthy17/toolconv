@@ -121,7 +121,8 @@ export const projects: Project[] = [
     ],
     tech: ['FastAPI', 'Streamlit', 'LangChain', 'ChromaDB', 'OpenAI'],
     links: [
-      { label: 'Code', kind: 'code', href: 'https://github.com/HarshithKeshavamurthy17/LexGuard' },
+      { label: 'Code', kind: 'code', href: 'https://github.com/HarshithKeshavamurthy17/lexguard' },
+      { label: 'Demo', kind: 'demo', href: 'https://lexguard-app.streamlit.app/' },
     ],
     badges: ['LegalTech', 'Agentic AI'],
     thumb: '/hk-portfolio/thumbs/lexguard.png',
