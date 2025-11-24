@@ -34,8 +34,8 @@ export const projects: Project[] = [
       { label: 'Code', kind: 'code', href: 'https://github.com/HarshithKeshavamurthy17/3d-posture-analytics' }
     ],
     badges: ['AI/ML', 'Computer Vision', 'HealthTech'],
-    thumb: '/thumbs/posture_analytics.png',
-    darkThumb: '/thumbs/posture_analytics.png',
+    thumb: '/thumbs/posture_analytics_logo.png',
+    darkThumb: '/thumbs/posture_analytics_logo.png',
     preview: { src: '/thumbs/posture_analytics.png', type: 'gif' },
     metrics: {
       'Memory Usage': '-90%',
