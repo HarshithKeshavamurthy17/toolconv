@@ -1,0 +1,40 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Frontend
+node_modules/
+dist/
+.vite/
+*.local
+
+# Backend
+uploads/*
+!uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+*.pyc
+.pytest_cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local

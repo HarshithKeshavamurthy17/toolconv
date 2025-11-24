@@ -1,0 +1,157 @@
+.upload-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.upload-container {
+    padding: 3rem;
+}
+
+.drop-zone {
+    border: 3px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.drop-zone:hover {
+    border-color: rgba(14, 165, 233, 0.5);
+    background: rgba(14, 165, 233, 0.05);
+}
+
+.drop-zone.dragging {
+    border-color: #0ea5e9;
+    background: rgba(14, 165, 233, 0.1);
+    transform: scale(1.02);
+}
+
+.drop-zone-content {
+    pointer-events: none;
+}
+
+.upload-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    color: #0ea5e9;
+}
+
+.file-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.preview-video {
+    width: 100%;
+    max-height: 400px;
+    border-radius: 0.75rem;
+    background: #000;
+}
+
+.file-info {
+    text-align: center;
+}
+
+.file-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.file-size {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+.progress-container {
+    margin-top: 1.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0ea5e9, #d946ef);
+    transition: width 0.3s ease;
+    border-radius: 999px;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0ea5e9;
+    margin-bottom: 0.5rem;
+}
+
+.processing-text {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.875rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.error-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 0.5rem;
+    color: #fca5a5;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.error-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
