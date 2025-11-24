@@ -19,6 +19,32 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'posture-analytics',
+    title: 'AI 3D Posture & Motion Analytics',
+    subtitle: 'Real-time biomechanical analysis using computer vision',
+    summary: 'A production-ready AI platform that transforms 2D video into interactive 3D biomechanical analytics for injury prevention and performance optimization.',
+    impact: [
+      'Reduced memory footprint by 90% using streaming generator pattern',
+      'Optimized real-time health checks with thread pool offloading',
+      'Implemented robust CORS for secure cross-origin data transfer'
+    ],
+    tech: ['React', 'Python', 'OpenCV', 'Three.js', 'MediaPipe'],
+    links: [
+      { label: 'Demo', kind: 'demo', href: 'https://3d-posture-analytics-ai.vercel.app' },
+      { label: 'Code', kind: 'code', href: 'https://github.com/HarshithKeshavamurthy17/3d-posture-analytics' }
+    ],
+    badges: ['AI/ML', 'Computer Vision', 'HealthTech'],
+    thumb: '/thumbs/posture_analytics.png',
+    darkThumb: '/thumbs/posture_analytics.png',
+    preview: { src: '/thumbs/posture_analytics.png', type: 'gif' },
+    metrics: {
+      'Memory Usage': '-90%',
+      'Accuracy': '98%',
+      'Latency': '<100ms'
+    },
+    imageFit: 'cover'
+  },
+  {
     id: 'vi-graph-rag',
     title: 'VI-Graph-RAG',
     subtitle: 'Graph-aware retrieval for vulnerability triage',

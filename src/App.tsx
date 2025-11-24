@@ -27,6 +27,7 @@ const ProjectF1Prediction = lazy(() => import('./pages/ProjectF1Prediction'));
 const ProjectOncoVision = lazy(() => import('./pages/ProjectOncoVision'));
 const ProjectAutoKPI = lazy(() => import('./pages/ProjectAutoKPI'));
 const ProjectLexGuard = lazy(() => import('./pages/ProjectLexGuard'));
+const ProjectPostureAnalytics = lazy(() => import('./pages/ProjectPostureAnalytics').then(module => ({ default: module.ProjectPostureAnalytics })));
 
 const HomePage = () => {
   const [commandOpen, setCommandOpen] = useState(false);
