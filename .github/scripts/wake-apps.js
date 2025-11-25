@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
 
 const STREAMLIT_APPS = [
     'https://lexguard-app.streamlit.app/',
