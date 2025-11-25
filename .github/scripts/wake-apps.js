@@ -13,16 +13,19 @@ async function wakeUpApp(browser, url) {
     try {
         console.log(`\n🔍 Checking ${url}...`);
 
+        // Set a realistic viewport
+        await page.setViewport({ width: 1920, height: 1080 });
+
         // Navigate to the app
         await page.goto(url, {
             waitUntil: 'networkidle2',
-            timeout: 30000
+            timeout: 60000
         });
 
-        // Wait a moment for the page to load
-        await page.waitForTimeout(3000);
+        // Wait for initial load
+        await page.waitForTimeout(5000);
 
-        // Check if the wake-up button exists (look for the text content)
+        // Check if the wake-up button exists
         const wakeUpButton = await page.evaluate(() => {
             const buttons = Array.from(document.querySelectorAll('button'));
             return buttons.find(btn =>
@@ -33,19 +36,38 @@ async function wakeUpApp(browser, url) {
         if (wakeUpButton) {
             console.log('💤 App is sleeping. Clicking wake-up button...');
 
-            // Click the button using page.evaluate
+            // Click the button
             await page.evaluate(() => {
                 const buttons = Array.from(document.querySelectorAll('button'));
                 const btn = buttons.find(b => b.textContent.includes('Yes, get this app back up!'));
                 if (btn) btn.click();
             });
 
-            // Wait for the app to wake up
-            await page.waitForTimeout(10000);
-            console.log('✅ App woken up successfully!');
+            // Wait for the app to wake up and load
+            console.log('⏳ Waiting for app to wake up...');
+            await page.waitForTimeout(15000);
+
+            // Wait for Streamlit to fully load (look for iframe or streamlit elements)
+            try {
+                await page.waitForSelector('iframe, [data-testid="stApp"]', { timeout: 30000 });
+                console.log('✅ App woken up and loaded successfully!');
+            } catch (e) {
+                console.log('⚠️  App woken up but Streamlit elements not detected');
+            }
         } else {
             console.log('✅ App is already awake!');
+
+            // Even if awake, wait for Streamlit to fully load to establish WebSocket
+            try {
+                await page.waitForSelector('iframe, [data-testid="stApp"]', { timeout: 10000 });
+                console.log('📡 Streamlit app fully loaded with WebSocket connection');
+            } catch (e) {
+                console.log('⚠️  Streamlit elements not detected, but page loaded');
+            }
         }
+
+        // Stay on the page for a bit to maintain the session
+        await page.waitForTimeout(5000);
 
     } catch (error) {
         console.error(`❌ Error with ${url}:`, error.message);
