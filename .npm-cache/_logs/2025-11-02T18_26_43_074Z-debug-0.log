@@ -1,0 +1,21 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.9.2
+2 info using node@v22.15.1
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/anithalakshmipathy/Documents/hk-portfolio/.npmrc
+5 silly config load:file:/Users/anithalakshmipathy/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm create vite@latest . --template react-ts
+8 verbose argv "create" "vite@latest" "." "--" "--template" "react-ts"
+9 verbose logfile logs-max:10 dir:/Users/anithalakshmipathy/Documents/hk-portfolio/.npm-cache/_logs/2025-11-02T18_26_43_074Z-
+10 verbose logfile /Users/anithalakshmipathy/Documents/hk-portfolio/.npm-cache/_logs/2025-11-02T18_26_43_074Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+13 http fetch GET 200 https://registry.npmjs.org/create-vite 136ms (cache revalidated)
+14 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+15 verbose cwd /Users/anithalakshmipathy/Documents/hk-portfolio
+16 verbose os Darwin 25.0.0
+17 verbose node v22.15.1
+18 verbose npm  v10.9.2
+19 verbose exit 0
+20 info ok

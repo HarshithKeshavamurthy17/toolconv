@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harinik.dev/sitemap.xml
+
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://harinik.dev/</loc>
+  </url>
+  <url>
+    <loc>https://harinik.dev/case/vi-graph-rag</loc>
+  </url>
+  <url>
+    <loc>https://harinik.dev/case/uber-etl</loc>
+  </url>
+  <url>
+    <loc>https://harinik.dev/case/f1-prediction</loc>
+  </url>
+  <url>
+    <loc>https://harinik.dev/case/breast-cancer-ml</loc>
+  </url>
+  <url>
+    <loc>https://harinik.dev/case/cs699-ensemble</loc>
+  </url>
+</urlset>
+
+

@@ -1,0 +1,706 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.9.2
+2 info using node@v22.15.1
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/anithalakshmipathy/Documents/hk-portfolio/.npmrc
+5 silly config load:file:/Users/anithalakshmipathy/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install framer-motion react-router-dom lucide-react clsx react-helmet-async class-variance-authority tailwind-merge @radix-ui/react-slot
+8 verbose argv "install" "framer-motion" "react-router-dom" "lucide-react" "clsx" "react-helmet-async" "class-variance-authority" "tailwind-merge" "@radix-ui/react-slot"
+9 verbose logfile logs-max:10 dir:/Users/anithalakshmipathy/Documents/hk-portfolio/.npm-cache/_logs/2025-11-02T18_43_49_470Z-
+10 verbose logfile /Users/anithalakshmipathy/Documents/hk-portfolio/.npm-cache/_logs/2025-11-02T18_43_49_470Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+13 silly idealTree buildDeps
+14 silly fetch manifest framer-motion@*
+15 silly packumentCache full:https://registry.npmjs.org/framer-motion cache-miss
+16 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+17 http fetch GET 200 https://registry.npmjs.org/framer-motion 512ms (cache miss)
+18 silly packumentCache full:https://registry.npmjs.org/framer-motion set size:undefined disposed:false
+19 silly fetch manifest @emotion/is-prop-valid@*
+20 silly packumentCache full:https://registry.npmjs.org/@emotion%2fis-prop-valid cache-miss
+21 http fetch GET 200 https://registry.npmjs.org/@emotion%2fis-prop-valid 135ms (cache miss)
+22 silly packumentCache full:https://registry.npmjs.org/@emotion%2fis-prop-valid set size:undefined disposed:false
+23 silly fetch manifest react@^18.3.1
+24 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+25 http fetch GET 200 https://registry.npmjs.org/react 85ms (cache revalidated)
+26 silly packumentCache full:https://registry.npmjs.org/react set size:6220657 disposed:false
+27 silly fetch manifest react-dom@^18.3.1
+28 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/react-dom 64ms (cache revalidated)
+30 silly packumentCache full:https://registry.npmjs.org/react-dom set size:8131756 disposed:false
+31 silly fetch manifest react-router-dom@*
+32 silly packumentCache full:https://registry.npmjs.org/react-router-dom cache-miss
+33 http fetch GET 200 https://registry.npmjs.org/react-router-dom 239ms (cache miss)
+34 silly packumentCache full:https://registry.npmjs.org/react-router-dom set size:undefined disposed:false
+35 silly fetch manifest lucide-react@*
+36 silly packumentCache full:https://registry.npmjs.org/lucide-react cache-miss
+37 http fetch GET 200 https://registry.npmjs.org/lucide-react 97ms (cache miss)
+38 silly packumentCache full:https://registry.npmjs.org/lucide-react set size:undefined disposed:false
+39 silly fetch manifest clsx@*
+40 silly packumentCache full:https://registry.npmjs.org/clsx cache-miss
+41 http fetch GET 200 https://registry.npmjs.org/clsx 40ms (cache miss)
+42 silly packumentCache full:https://registry.npmjs.org/clsx set size:undefined disposed:false
+43 silly fetch manifest react-helmet-async@*
+44 silly packumentCache full:https://registry.npmjs.org/react-helmet-async cache-miss
+45 http fetch GET 200 https://registry.npmjs.org/react-helmet-async 126ms (cache miss)
+46 silly packumentCache full:https://registry.npmjs.org/react-helmet-async set size:undefined disposed:false
+47 silly fetch manifest class-variance-authority@*
+48 silly packumentCache full:https://registry.npmjs.org/class-variance-authority cache-miss
+49 http fetch GET 200 https://registry.npmjs.org/class-variance-authority 59ms (cache miss)
+50 silly packumentCache full:https://registry.npmjs.org/class-variance-authority set size:undefined disposed:false
+51 silly fetch manifest tailwind-merge@*
+52 silly packumentCache full:https://registry.npmjs.org/tailwind-merge cache-miss
+53 http fetch GET 200 https://registry.npmjs.org/tailwind-merge 125ms (cache miss)
+54 silly packumentCache full:https://registry.npmjs.org/tailwind-merge set size:undefined disposed:false
+55 silly fetch manifest @radix-ui/react-slot@*
+56 silly packumentCache full:https://registry.npmjs.org/@radix-ui%2freact-slot cache-miss
+57 http fetch GET 200 https://registry.npmjs.org/@radix-ui%2freact-slot 109ms (cache miss)
+58 silly packumentCache full:https://registry.npmjs.org/@radix-ui%2freact-slot set size:undefined disposed:false
+59 silly fetch manifest @types/react@^18.3.11
+60 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+61 http fetch GET 200 https://registry.npmjs.org/@types%2freact 84ms (cache revalidated)
+62 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2505103 disposed:false
+63 silly placeDep ROOT @radix-ui/react-slot@1.2.3 OK for: hk-portfolio@0.0.0 want: *
+64 silly placeDep ROOT class-variance-authority@0.7.1 OK for: hk-portfolio@0.0.0 want: *
+65 silly placeDep ROOT clsx@2.1.1 OK for: hk-portfolio@0.0.0 want: *
+66 silly placeDep ROOT framer-motion@12.23.24 OK for: hk-portfolio@0.0.0 want: *
+67 silly placeDep ROOT lucide-react@0.552.0 OK for: hk-portfolio@0.0.0 want: *
+68 silly placeDep ROOT react-helmet-async@2.0.5 OK for: hk-portfolio@0.0.0 want: *
+69 silly placeDep ROOT react-router-dom@7.9.5 OK for: hk-portfolio@0.0.0 want: *
+70 silly placeDep ROOT tailwind-merge@3.3.1 OK for: hk-portfolio@0.0.0 want: *
+71 silly fetch manifest @radix-ui/react-compose-refs@1.1.2
+72 silly packumentCache full:https://registry.npmjs.org/@radix-ui%2freact-compose-refs cache-miss
+73 silly fetch manifest clsx@^2.1.1
+74 silly packumentCache full:https://registry.npmjs.org/clsx cache-miss
+75 silly fetch manifest tslib@^2.4.0
+76 silly packumentCache full:https://registry.npmjs.org/tslib cache-miss
+77 silly fetch manifest motion-dom@^12.23.23
+78 silly packumentCache full:https://registry.npmjs.org/motion-dom cache-miss
+79 silly fetch manifest motion-utils@^12.23.6
+80 silly packumentCache full:https://registry.npmjs.org/motion-utils cache-miss
+81 silly fetch manifest invariant@^2.2.4
+82 silly packumentCache full:https://registry.npmjs.org/invariant cache-miss
+83 silly fetch manifest react-fast-compare@^3.2.2
+84 silly packumentCache full:https://registry.npmjs.org/react-fast-compare cache-miss
+85 http cache https://registry.npmjs.org/clsx 7ms (cache hit)
+86 silly packumentCache full:https://registry.npmjs.org/clsx set size:42506 disposed:false
+87 silly fetch manifest shallowequal@^1.1.0
+88 silly packumentCache full:https://registry.npmjs.org/shallowequal cache-miss
+89 http fetch GET 200 https://registry.npmjs.org/@radix-ui%2freact-compose-refs 112ms (cache miss)
+90 silly packumentCache full:https://registry.npmjs.org/@radix-ui%2freact-compose-refs set size:undefined disposed:false
+91 silly fetch manifest react-router@7.9.5
+92 silly packumentCache full:https://registry.npmjs.org/react-router cache-miss
+93 http fetch GET 200 https://registry.npmjs.org/motion-utils 123ms (cache miss)
+94 silly packumentCache full:https://registry.npmjs.org/motion-utils set size:undefined disposed:false
+95 http fetch GET 200 https://registry.npmjs.org/react-fast-compare 146ms (cache miss)
+96 silly packumentCache full:https://registry.npmjs.org/react-fast-compare set size:undefined disposed:false
+97 http fetch GET 200 https://registry.npmjs.org/invariant 165ms (cache miss)
+98 silly packumentCache full:https://registry.npmjs.org/invariant set size:undefined disposed:false
+99 http fetch GET 200 https://registry.npmjs.org/tslib 166ms (cache miss)
+100 silly packumentCache full:https://registry.npmjs.org/tslib set size:undefined disposed:false
+101 http fetch GET 200 https://registry.npmjs.org/shallowequal 160ms (cache miss)
+102 silly packumentCache full:https://registry.npmjs.org/shallowequal set size:undefined disposed:false
+103 http fetch GET 200 https://registry.npmjs.org/motion-dom 249ms (cache miss)
+104 silly packumentCache full:https://registry.npmjs.org/motion-dom set size:undefined disposed:false
+105 http fetch GET 200 https://registry.npmjs.org/react-router 153ms (cache miss)
+106 silly packumentCache full:https://registry.npmjs.org/react-router set size:undefined disposed:false
+107 silly fetch manifest @types/react@*
+108 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+109 http cache https://registry.npmjs.org/@types%2freact 4ms (cache hit)
+110 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2505103 disposed:false
+111 silly fetch manifest react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+112 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+113 http cache https://registry.npmjs.org/react 7ms (cache hit)
+114 silly packumentCache full:https://registry.npmjs.org/react set size:6220657 disposed:false
+115 silly placeDep ROOT @radix-ui/react-compose-refs@1.1.2 OK for: @radix-ui/react-slot@1.2.3 want: 1.1.2
+116 silly placeDep ROOT motion-dom@12.23.23 OK for: framer-motion@12.23.24 want: ^12.23.23
+117 silly placeDep ROOT motion-utils@12.23.6 OK for: framer-motion@12.23.24 want: ^12.23.6
+118 silly placeDep ROOT tslib@2.8.1 OK for: framer-motion@12.23.24 want: ^2.4.0
+119 silly placeDep ROOT invariant@2.2.4 OK for: react-helmet-async@2.0.5 want: ^2.2.4
+120 silly placeDep ROOT react-fast-compare@3.2.2 OK for: react-helmet-async@2.0.5 want: ^3.2.2
+121 silly placeDep ROOT shallowequal@1.1.0 OK for: react-helmet-async@2.0.5 want: ^1.1.0
+122 silly fetch manifest react@>=18
+123 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+124 http cache https://registry.npmjs.org/react 10ms (cache hit)
+125 silly packumentCache full:https://registry.npmjs.org/react set size:6220657 disposed:false
+126 silly fetch manifest react-dom@>=18
+127 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+128 http cache https://registry.npmjs.org/react-dom 7ms (cache hit)
+129 silly packumentCache full:https://registry.npmjs.org/react-dom set size:8131756 disposed:false
+130 silly placeDep ROOT react-router@7.9.5 OK for: react-router-dom@7.9.5 want: 7.9.5
+131 silly fetch manifest cookie@^1.0.1
+132 silly packumentCache full:https://registry.npmjs.org/cookie cache-miss
+133 silly fetch manifest set-cookie-parser@^2.6.0
+134 silly packumentCache full:https://registry.npmjs.org/set-cookie-parser cache-miss
+135 http fetch GET 200 https://registry.npmjs.org/cookie 55ms (cache miss)
+136 silly packumentCache full:https://registry.npmjs.org/cookie set size:undefined disposed:false
+137 http fetch GET 200 https://registry.npmjs.org/set-cookie-parser 55ms (cache miss)
+138 silly packumentCache full:https://registry.npmjs.org/set-cookie-parser set size:undefined disposed:false
+139 silly placeDep ROOT cookie@1.0.2 OK for: react-router@7.9.5 want: ^1.0.1
+140 silly placeDep ROOT set-cookie-parser@2.7.2 OK for: react-router@7.9.5 want: ^2.6.0
+141 silly reify moves {}
+142 silly audit bulk request {
+142 silly audit   '@alloc/quick-lru': [ '5.2.0' ],
+142 silly audit   '@esbuild/aix-ppc64': [ '0.21.5' ],
+142 silly audit   '@esbuild/android-arm': [ '0.21.5' ],
+142 silly audit   '@esbuild/android-arm64': [ '0.21.5' ],
+142 silly audit   '@esbuild/android-x64': [ '0.21.5' ],
+142 silly audit   '@esbuild/darwin-arm64': [ '0.21.5' ],
+142 silly audit   '@esbuild/darwin-x64': [ '0.21.5' ],
+142 silly audit   '@esbuild/freebsd-arm64': [ '0.21.5' ],
+142 silly audit   '@esbuild/freebsd-x64': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-arm': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-arm64': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-ia32': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-loong64': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-mips64el': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-ppc64': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-riscv64': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-s390x': [ '0.21.5' ],
+142 silly audit   '@esbuild/linux-x64': [ '0.21.5' ],
+142 silly audit   '@esbuild/netbsd-x64': [ '0.21.5' ],
+142 silly audit   '@esbuild/openbsd-x64': [ '0.21.5' ],
+142 silly audit   '@esbuild/sunos-x64': [ '0.21.5' ],
+142 silly audit   '@esbuild/win32-arm64': [ '0.21.5' ],
+142 silly audit   '@esbuild/win32-ia32': [ '0.21.5' ],
+142 silly audit   '@esbuild/win32-x64': [ '0.21.5' ],
+142 silly audit   '@isaacs/cliui': [ '8.0.2' ],
+142 silly audit   '@jridgewell/gen-mapping': [ '0.3.13' ],
+142 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+142 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+142 silly audit   '@jridgewell/trace-mapping': [ '0.3.31' ],
+142 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+142 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+142 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+142 silly audit   '@pkgjs/parseargs': [ '0.11.0' ],
+142 silly audit   '@rolldown/pluginutils': [ '1.0.0-beta.27' ],
+142 silly audit   '@rollup/rollup-android-arm-eabi': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-android-arm64': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-darwin-arm64': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-darwin-x64': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-freebsd-arm64': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-freebsd-x64': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-arm-gnueabihf': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-arm-musleabihf': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-arm64-gnu': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-arm64-musl': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-loong64-gnu': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-ppc64-gnu': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-riscv64-gnu': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-riscv64-musl': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-s390x-gnu': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-x64-gnu': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-linux-x64-musl': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-openharmony-arm64': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-win32-arm64-msvc': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-win32-ia32-msvc': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-win32-x64-gnu': [ '4.52.5' ],
+142 silly audit   '@rollup/rollup-win32-x64-msvc': [ '4.52.5' ],
+142 silly audit   '@swc/core': [ '1.14.0' ],
+142 silly audit   '@swc/core-darwin-arm64': [ '1.14.0' ],
+142 silly audit   '@swc/core-darwin-x64': [ '1.14.0' ],
+142 silly audit   '@swc/core-linux-arm-gnueabihf': [ '1.14.0' ],
+142 silly audit   '@swc/core-linux-arm64-gnu': [ '1.14.0' ],
+142 silly audit   '@swc/core-linux-arm64-musl': [ '1.14.0' ],
+142 silly audit   '@swc/core-linux-x64-gnu': [ '1.14.0' ],
+142 silly audit   '@swc/core-linux-x64-musl': [ '1.14.0' ],
+142 silly audit   '@swc/core-win32-arm64-msvc': [ '1.14.0' ],
+142 silly audit   '@swc/core-win32-ia32-msvc': [ '1.14.0' ],
+142 silly audit   '@swc/core-win32-x64-msvc': [ '1.14.0' ],
+142 silly audit   '@swc/counter': [ '0.1.3' ],
+142 silly audit   '@swc/types': [ '0.1.25' ],
+142 silly audit   '@types/estree': [ '1.0.8' ],
+142 silly audit   '@types/prop-types': [ '15.7.15' ],
+142 silly audit   '@types/react': [ '18.3.26' ],
+142 silly audit   '@types/react-dom': [ '18.3.7' ],
+142 silly audit   '@vitejs/plugin-react-swc': [ '3.11.0' ],
+142 silly audit   'ansi-regex': [ '6.2.2', '5.0.1' ],
+142 silly audit   'ansi-styles': [ '6.2.3', '4.3.0' ],
+142 silly audit   'any-promise': [ '1.3.0' ],
+142 silly audit   anymatch: [ '3.1.3' ],
+142 silly audit   arg: [ '5.0.2' ],
+142 silly audit   autoprefixer: [ '10.4.21' ],
+142 silly audit   'balanced-match': [ '1.0.2' ],
+142 silly audit   'baseline-browser-mapping': [ '2.8.23' ],
+142 silly audit   'binary-extensions': [ '2.3.0' ],
+142 silly audit   'brace-expansion': [ '2.0.2' ],
+142 silly audit   braces: [ '3.0.3' ],
+142 silly audit   browserslist: [ '4.27.0' ],
+142 silly audit   'camelcase-css': [ '2.0.1' ],
+142 silly audit   'caniuse-lite': [ '1.0.30001753' ],
+142 silly audit   chokidar: [ '3.6.0' ],
+142 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+142 silly audit   'color-convert': [ '2.0.1' ],
+142 silly audit   'color-name': [ '1.1.4' ],
+142 silly audit   commander: [ '4.1.1' ],
+142 silly audit   'cross-spawn': [ '7.0.6' ],
+142 silly audit   cssesc: [ '3.0.0' ],
+142 silly audit   csstype: [ '3.1.3' ],
+142 silly audit   didyoumean: [ '1.2.2' ],
+142 silly audit   dlv: [ '1.1.3' ],
+142 silly audit   eastasianwidth: [ '0.2.0' ],
+142 silly audit   'electron-to-chromium': [ '1.5.244' ],
+142 silly audit   'emoji-regex': [ '9.2.2', '8.0.0' ],
+142 silly audit   esbuild: [ '0.21.5' ],
+142 silly audit   escalade: [ '3.2.0' ],
+142 silly audit   'fast-glob': [ '3.3.3' ],
+142 silly audit   fastq: [ '1.19.1' ],
+142 silly audit   'fill-range': [ '7.1.1' ],
+142 silly audit   'foreground-child': [ '3.3.1' ],
+142 silly audit   'fraction.js': [ '4.3.7' ],
+142 silly audit   fsevents: [ '2.3.3' ],
+142 silly audit   'function-bind': [ '1.1.2' ],
+142 silly audit   glob: [ '10.4.5' ],
+142 silly audit   hasown: [ '2.0.2' ],
+142 silly audit   'is-binary-path': [ '2.1.0' ],
+142 silly audit   'is-core-module': [ '2.16.1' ],
+142 silly audit   'is-extglob': [ '2.1.1' ],
+142 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+142 silly audit   'is-glob': [ '4.0.3' ],
+142 silly audit   'is-number': [ '7.0.0' ],
+142 silly audit   isexe: [ '2.0.0' ],
+142 silly audit   jackspeak: [ '3.4.3' ],
+142 silly audit   jiti: [ '1.21.7' ],
+142 silly audit   'js-tokens': [ '4.0.0' ],
+142 silly audit   lilconfig: [ '3.1.3' ],
+142 silly audit   'lines-and-columns': [ '1.2.4' ],
+142 silly audit   'loose-envify': [ '1.4.0' ],
+142 silly audit   'lru-cache': [ '10.4.3' ],
+142 silly audit   merge2: [ '1.4.1' ],
+142 silly audit   micromatch: [ '4.0.8' ],
+142 silly audit   minimatch: [ '9.0.5' ],
+142 silly audit   minipass: [ '7.1.2' ],
+142 silly audit   mz: [ '2.7.0' ],
+142 silly audit   nanoid: [ '3.3.11' ],
+142 silly audit   'node-releases': [ '2.0.27' ],
+142 silly audit   'normalize-path': [ '3.0.0' ],
+142 silly audit   'normalize-range': [ '0.1.2' ],
+142 silly audit   'object-assign': [ '4.1.1' ],
+142 silly audit   'object-hash': [ '3.0.0' ],
+142 silly audit   'package-json-from-dist': [ '1.0.1' ],
+142 silly audit   'path-key': [ '3.1.1' ],
+142 silly audit   'path-parse': [ '1.0.7' ],
+142 silly audit   'path-scurry': [ '1.11.1' ],
+142 silly audit   picocolors: [ '1.1.1' ],
+142 silly audit   picomatch: [ '2.3.1' ],
+142 silly audit   pify: [ '2.3.0' ],
+142 silly audit   pirates: [ '4.0.7' ],
+142 silly audit   postcss: [ '8.5.6' ],
+142 silly audit   'postcss-import': [ '15.1.0' ],
+142 silly audit   'postcss-js': [ '4.1.0' ],
+142 silly audit   'postcss-load-config': [ '6.0.1' ],
+142 silly audit   'postcss-nested': [ '6.2.0' ],
+142 silly audit   'postcss-selector-parser': [ '6.1.2' ],
+142 silly audit   'postcss-value-parser': [ '4.2.0' ],
+142 silly audit   'queue-microtask': [ '1.2.3' ],
+142 silly audit   react: [ '18.3.1' ],
+142 silly audit   'react-dom': [ '18.3.1' ],
+142 silly audit   'read-cache': [ '1.0.0' ],
+142 silly audit   readdirp: [ '3.6.0' ],
+142 silly audit   resolve: [ '1.22.11' ],
+142 silly audit   reusify: [ '1.1.0' ],
+142 silly audit   rollup: [ '4.52.5' ],
+142 silly audit   'run-parallel': [ '1.2.0' ],
+142 silly audit   scheduler: [ '0.23.2' ],
+142 silly audit   'shebang-command': [ '2.0.0' ],
+142 silly audit   'shebang-regex': [ '3.0.0' ],
+142 silly audit   'signal-exit': [ '4.1.0' ],
+142 silly audit   'source-map-js': [ '1.2.1' ],
+142 silly audit   'string-width': [ '5.1.2', '4.2.3' ],
+142 silly audit   'strip-ansi': [ '6.0.1', '7.1.2' ],
+142 silly audit   sucrase: [ '3.35.0' ],
+142 silly audit   'supports-preserve-symlinks-flag': [ '1.0.0' ],
+142 silly audit   tailwindcss: [ '3.4.18' ],
+142 silly audit   thenify: [ '3.3.1' ],
+142 silly audit   'thenify-all': [ '1.6.0' ],
+142 silly audit   'to-regex-range': [ '5.0.1' ],
+142 silly audit   'ts-interface-checker': [ '0.1.13' ],
+142 silly audit   typescript: [ '5.9.3' ],
+142 silly audit   'update-browserslist-db': [ '1.1.4' ],
+142 silly audit   'util-deprecate': [ '1.0.2' ],
+142 silly audit   vite: [ '5.4.21' ],
+142 silly audit   which: [ '2.0.2' ],
+142 silly audit   'wrap-ansi': [ '8.1.0', '7.0.0' ],
+142 silly audit   '@radix-ui/react-slot': [ '1.2.3' ],
+142 silly audit   'class-variance-authority': [ '0.7.1' ],
+142 silly audit   clsx: [ '2.1.1' ],
+142 silly audit   'framer-motion': [ '12.23.24' ],
+142 silly audit   'lucide-react': [ '0.552.0' ],
+142 silly audit   'react-helmet-async': [ '2.0.5' ],
+142 silly audit   'react-router-dom': [ '7.9.5' ],
+142 silly audit   'tailwind-merge': [ '3.3.1' ],
+142 silly audit   '@radix-ui/react-compose-refs': [ '1.1.2' ],
+142 silly audit   'motion-dom': [ '12.23.23' ],
+142 silly audit   'motion-utils': [ '12.23.6' ],
+142 silly audit   tslib: [ '2.8.1' ],
+142 silly audit   invariant: [ '2.2.4' ],
+142 silly audit   'react-fast-compare': [ '3.2.2' ],
+142 silly audit   shallowequal: [ '1.1.0' ],
+142 silly audit   'react-router': [ '7.9.5' ],
+142 silly audit   cookie: [ '1.0.2' ],
+142 silly audit   'set-cookie-parser': [ '2.7.2' ]
+142 silly audit }
+143 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-win32-x64-msvc
+144 silly reify mark deleted [
+144 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-win32-x64-msvc'
+144 silly reify ]
+145 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-win32-ia32-msvc
+146 silly reify mark deleted [
+146 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-win32-ia32-msvc'
+146 silly reify ]
+147 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-win32-arm64-msvc
+148 silly reify mark deleted [
+148 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-win32-arm64-msvc'
+148 silly reify ]
+149 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-x64-musl
+150 silly reify mark deleted [
+150 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-x64-musl'
+150 silly reify ]
+151 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-x64-gnu
+152 silly reify mark deleted [
+152 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-x64-gnu'
+152 silly reify ]
+153 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-arm64-musl
+154 silly reify mark deleted [
+154 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-arm64-musl'
+154 silly reify ]
+155 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-arm64-gnu
+156 silly reify mark deleted [
+156 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-arm64-gnu'
+156 silly reify ]
+157 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-arm-gnueabihf
+158 silly reify mark deleted [
+158 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-linux-arm-gnueabihf'
+158 silly reify ]
+159 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-darwin-x64
+160 silly reify mark deleted [
+160 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@swc/core-darwin-x64'
+160 silly reify ]
+161 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-x64-msvc
+162 silly reify mark deleted [
+162 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-x64-msvc'
+162 silly reify ]
+163 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-x64-gnu
+164 silly reify mark deleted [
+164 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-x64-gnu'
+164 silly reify ]
+165 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-ia32-msvc
+166 silly reify mark deleted [
+166 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-ia32-msvc'
+166 silly reify ]
+167 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-arm64-msvc
+168 silly reify mark deleted [
+168 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-win32-arm64-msvc'
+168 silly reify ]
+169 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-openharmony-arm64
+170 silly reify mark deleted [
+170 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-openharmony-arm64'
+170 silly reify ]
+171 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-x64-musl
+172 silly reify mark deleted [
+172 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-x64-musl'
+172 silly reify ]
+173 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-x64-gnu
+174 silly reify mark deleted [
+174 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-x64-gnu'
+174 silly reify ]
+175 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-s390x-gnu
+176 silly reify mark deleted [
+176 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-s390x-gnu'
+176 silly reify ]
+177 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-riscv64-musl
+178 silly reify mark deleted [
+178 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-riscv64-musl'
+178 silly reify ]
+179 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-riscv64-gnu
+180 silly reify mark deleted [
+180 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-riscv64-gnu'
+180 silly reify ]
+181 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-ppc64-gnu
+182 silly reify mark deleted [
+182 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-ppc64-gnu'
+182 silly reify ]
+183 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-loong64-gnu
+184 silly reify mark deleted [
+184 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-loong64-gnu'
+184 silly reify ]
+185 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm64-musl
+186 silly reify mark deleted [
+186 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm64-musl'
+186 silly reify ]
+187 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm64-gnu
+188 silly reify mark deleted [
+188 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm64-gnu'
+188 silly reify ]
+189 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm-musleabihf
+190 silly reify mark deleted [
+190 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm-musleabihf'
+190 silly reify ]
+191 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm-gnueabihf
+192 silly reify mark deleted [
+192 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-linux-arm-gnueabihf'
+192 silly reify ]
+193 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-freebsd-x64
+194 silly reify mark deleted [
+194 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-freebsd-x64'
+194 silly reify ]
+195 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-freebsd-arm64
+196 silly reify mark deleted [
+196 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-freebsd-arm64'
+196 silly reify ]
+197 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-darwin-x64
+198 silly reify mark deleted [
+198 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-darwin-x64'
+198 silly reify ]
+199 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-android-arm64
+200 silly reify mark deleted [
+200 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-android-arm64'
+200 silly reify ]
+201 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-android-arm-eabi
+202 silly reify mark deleted [
+202 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@rollup/rollup-android-arm-eabi'
+202 silly reify ]
+203 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/win32-x64
+204 silly reify mark deleted [
+204 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/win32-x64'
+204 silly reify ]
+205 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/win32-ia32
+206 silly reify mark deleted [
+206 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/win32-ia32'
+206 silly reify ]
+207 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/win32-arm64
+208 silly reify mark deleted [
+208 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/win32-arm64'
+208 silly reify ]
+209 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/sunos-x64
+210 silly reify mark deleted [
+210 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/sunos-x64'
+210 silly reify ]
+211 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/openbsd-x64
+212 silly reify mark deleted [
+212 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/openbsd-x64'
+212 silly reify ]
+213 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/netbsd-x64
+214 silly reify mark deleted [
+214 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/netbsd-x64'
+214 silly reify ]
+215 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-x64
+216 silly reify mark deleted [
+216 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-x64'
+216 silly reify ]
+217 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-s390x
+218 silly reify mark deleted [
+218 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-s390x'
+218 silly reify ]
+219 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-riscv64
+220 silly reify mark deleted [
+220 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-riscv64'
+220 silly reify ]
+221 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-ppc64
+222 silly reify mark deleted [
+222 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-ppc64'
+222 silly reify ]
+223 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-mips64el
+224 silly reify mark deleted [
+224 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-mips64el'
+224 silly reify ]
+225 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-loong64
+226 silly reify mark deleted [
+226 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-loong64'
+226 silly reify ]
+227 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-ia32
+228 silly reify mark deleted [
+228 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-ia32'
+228 silly reify ]
+229 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-arm64
+230 silly reify mark deleted [
+230 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-arm64'
+230 silly reify ]
+231 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-arm
+232 silly reify mark deleted [
+232 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/linux-arm'
+232 silly reify ]
+233 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/freebsd-x64
+234 silly reify mark deleted [
+234 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/freebsd-x64'
+234 silly reify ]
+235 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/freebsd-arm64
+236 silly reify mark deleted [
+236 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/freebsd-arm64'
+236 silly reify ]
+237 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/darwin-x64
+238 silly reify mark deleted [
+238 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/darwin-x64'
+238 silly reify ]
+239 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/android-x64
+240 silly reify mark deleted [
+240 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/android-x64'
+240 silly reify ]
+241 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/android-arm64
+242 silly reify mark deleted [
+242 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/android-arm64'
+242 silly reify ]
+243 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/android-arm
+244 silly reify mark deleted [
+244 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/android-arm'
+244 silly reify ]
+245 verbose reify failed optional dependency /Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/aix-ppc64
+246 silly reify mark deleted [
+246 silly reify   '/Users/anithalakshmipathy/Documents/hk-portfolio/node_modules/@esbuild/aix-ppc64'
+246 silly reify ]
+247 http cache set-cookie-parser@https://registry.npmjs.org/set-cookie-parser/-/set-cookie-parser-2.7.2.tgz 0ms (cache hit)
+248 http cache cookie@https://registry.npmjs.org/cookie/-/cookie-1.0.2.tgz 0ms (cache hit)
+249 http cache react-router@https://registry.npmjs.org/react-router/-/react-router-7.9.5.tgz 0ms (cache hit)
+250 http cache react-fast-compare@https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.2.tgz 0ms (cache hit)
+251 http cache invariant@https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz 0ms (cache hit)
+252 http cache motion-utils@https://registry.npmjs.org/motion-utils/-/motion-utils-12.23.6.tgz 0ms (cache hit)
+253 http cache motion-dom@https://registry.npmjs.org/motion-dom/-/motion-dom-12.23.23.tgz 0ms (cache hit)
+254 http cache tailwind-merge@https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-3.3.1.tgz 0ms (cache hit)
+255 http cache shallowequal@https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz 0ms (cache hit)
+256 http cache @radix-ui/react-compose-refs@https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.2.tgz 0ms (cache hit)
+257 http cache tslib@https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz 0ms (cache hit)
+258 http cache clsx@https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz 0ms (cache hit)
+259 http cache lucide-react@https://registry.npmjs.org/lucide-react/-/lucide-react-0.552.0.tgz 0ms (cache hit)
+260 http cache class-variance-authority@https://registry.npmjs.org/class-variance-authority/-/class-variance-authority-0.7.1.tgz 0ms (cache hit)
+261 http cache react-helmet-async@https://registry.npmjs.org/react-helmet-async/-/react-helmet-async-2.0.5.tgz 0ms (cache hit)
+262 http cache @radix-ui/react-slot@https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.2.3.tgz 0ms (cache hit)
+263 http cache react-router-dom@https://registry.npmjs.org/react-router-dom/-/react-router-dom-7.9.5.tgz 0ms (cache hit)
+264 http cache fsevents@https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz 0ms (cache hit)
+265 http cache framer-motion@https://registry.npmjs.org/framer-motion/-/framer-motion-12.23.24.tgz 0ms (cache hit)
+266 silly tarball no local data for set-cookie-parser@https://registry.npmjs.org/set-cookie-parser/-/set-cookie-parser-2.7.2.tgz. Extracting by manifest.
+267 silly tarball no local data for react-router@https://registry.npmjs.org/react-router/-/react-router-7.9.5.tgz. Extracting by manifest.
+268 silly tarball no local data for cookie@https://registry.npmjs.org/cookie/-/cookie-1.0.2.tgz. Extracting by manifest.
+269 silly tarball no local data for invariant@https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz. Extracting by manifest.
+270 silly tarball no local data for react-fast-compare@https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.2.tgz. Extracting by manifest.
+271 silly tarball no local data for motion-utils@https://registry.npmjs.org/motion-utils/-/motion-utils-12.23.6.tgz. Extracting by manifest.
+272 silly tarball no local data for motion-dom@https://registry.npmjs.org/motion-dom/-/motion-dom-12.23.23.tgz. Extracting by manifest.
+273 silly tarball no local data for tailwind-merge@https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-3.3.1.tgz. Extracting by manifest.
+274 silly tarball no local data for shallowequal@https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz. Extracting by manifest.
+275 silly tarball no local data for tslib@https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz. Extracting by manifest.
+276 silly tarball no local data for @radix-ui/react-compose-refs@https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.2.tgz. Extracting by manifest.
+277 silly tarball no local data for clsx@https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz. Extracting by manifest.
+278 silly tarball no local data for lucide-react@https://registry.npmjs.org/lucide-react/-/lucide-react-0.552.0.tgz. Extracting by manifest.
+279 silly tarball no local data for react-helmet-async@https://registry.npmjs.org/react-helmet-async/-/react-helmet-async-2.0.5.tgz. Extracting by manifest.
+280 silly tarball no local data for class-variance-authority@https://registry.npmjs.org/class-variance-authority/-/class-variance-authority-0.7.1.tgz. Extracting by manifest.
+281 silly tarball no local data for @radix-ui/react-slot@https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.2.3.tgz. Extracting by manifest.
+282 silly tarball no local data for react-router-dom@https://registry.npmjs.org/react-router-dom/-/react-router-dom-7.9.5.tgz. Extracting by manifest.
+283 silly tarball no local data for framer-motion@https://registry.npmjs.org/framer-motion/-/framer-motion-12.23.24.tgz. Extracting by manifest.
+284 http fetch GET 200 https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.2.tgz 61ms (cache miss)
+285 http fetch GET 200 https://registry.npmjs.org/set-cookie-parser/-/set-cookie-parser-2.7.2.tgz 62ms (cache miss)
+286 http fetch GET 200 https://registry.npmjs.org/motion-utils/-/motion-utils-12.23.6.tgz 65ms (cache miss)
+287 http fetch GET 200 https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz 72ms (cache miss)
+288 http fetch GET 200 https://registry.npmjs.org/class-variance-authority/-/class-variance-authority-0.7.1.tgz 97ms (cache miss)
+289 http fetch GET 200 https://registry.npmjs.org/react-router-dom/-/react-router-dom-7.9.5.tgz 117ms (cache miss)
+290 http fetch GET 200 https://registry.npmjs.org/cookie/-/cookie-1.0.2.tgz 120ms (cache miss)
+291 http fetch GET 200 https://registry.npmjs.org/react-router/-/react-router-7.9.5.tgz 134ms (cache miss)
+292 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 153ms
+293 silly audit report {
+293 silly audit report   esbuild: [
+293 silly audit report     {
+293 silly audit report       id: 1102341,
+293 silly audit report       url: 'https://github.com/advisories/GHSA-67mh-4wv8-2f99',
+293 silly audit report       title: 'esbuild enables any website to send any requests to the development server and read the response',
+293 silly audit report       severity: 'moderate',
+293 silly audit report       vulnerable_versions: '<=0.24.2',
+293 silly audit report       cwe: [Array],
+293 silly audit report       cvss: [Object]
+293 silly audit report     }
+293 silly audit report   ]
+293 silly audit report }
+294 silly packumentCache corgi:https://registry.npmjs.org/esbuild cache-miss
+295 http fetch GET 200 https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz 163ms (cache miss)
+296 http fetch GET 200 https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz 164ms (cache miss)
+297 http fetch GET 200 https://registry.npmjs.org/react-helmet-async/-/react-helmet-async-2.0.5.tgz 169ms (cache miss)
+298 http fetch GET 200 https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz 171ms (cache miss)
+299 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.2.3.tgz 173ms (cache miss)
+300 http fetch GET 200 https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-3.3.1.tgz 177ms (cache miss)
+301 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.2.tgz 188ms (cache miss)
+302 http fetch GET 200 https://registry.npmjs.org/esbuild 50ms (cache revalidated)
+303 silly packumentCache corgi:https://registry.npmjs.org/esbuild set size:871322 disposed:false
+304 silly packumentCache corgi:https://registry.npmjs.org/vite cache-miss
+305 http fetch GET 200 https://registry.npmjs.org/framer-motion/-/framer-motion-12.23.24.tgz 227ms (cache miss)
+306 http fetch GET 200 https://registry.npmjs.org/motion-dom/-/motion-dom-12.23.23.tgz 232ms (cache miss)
+307 http fetch GET 200 https://registry.npmjs.org/vite 116ms (cache revalidated)
+308 silly packumentCache corgi:https://registry.npmjs.org/vite set size:2112523 disposed:false
+309 silly packumentCache corgi:https://registry.npmjs.org/@vitejs%2fplugin-react-swc cache-miss
+310 http fetch GET 200 https://registry.npmjs.org/lucide-react/-/lucide-react-0.552.0.tgz 699ms (cache miss)
+311 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fplugin-react-swc 423ms (cache revalidated)
+312 silly packumentCache corgi:https://registry.npmjs.org/@vitejs%2fplugin-react-swc set size:33579 disposed:false
+313 silly ADD node_modules/set-cookie-parser
+314 silly ADD node_modules/cookie
+315 silly ADD node_modules/react-router
+316 silly ADD node_modules/shallowequal
+317 silly ADD node_modules/react-fast-compare
+318 silly ADD node_modules/invariant
+319 silly ADD node_modules/tslib
+320 silly ADD node_modules/motion-utils
+321 silly ADD node_modules/motion-dom
+322 silly ADD node_modules/@radix-ui/react-compose-refs
+323 silly ADD node_modules/tailwind-merge
+324 silly ADD node_modules/react-router-dom
+325 silly ADD node_modules/react-helmet-async
+326 silly ADD node_modules/lucide-react
+327 silly ADD node_modules/framer-motion
+328 silly ADD node_modules/clsx
+329 silly ADD node_modules/class-variance-authority
+330 silly ADD node_modules/@radix-ui/react-slot
+331 silly ADD node_modules/fsevents
+332 silly ADD
+333 silly ADD
+334 silly ADD
+335 silly ADD
+336 silly ADD
+337 silly ADD
+338 silly ADD
+339 silly ADD
+340 silly ADD
+341 silly ADD
+342 silly ADD
+343 silly ADD
+344 silly ADD
+345 silly ADD
+346 silly ADD
+347 silly ADD
+348 silly ADD
+349 silly ADD
+350 silly ADD
+351 silly ADD
+352 silly ADD
+353 silly ADD
+354 silly ADD
+355 silly ADD
+356 silly ADD
+357 silly ADD
+358 silly ADD
+359 silly ADD
+360 silly ADD
+361 silly ADD
+362 silly ADD
+363 silly ADD
+364 silly ADD
+365 silly ADD
+366 silly ADD
+367 silly ADD
+368 silly ADD
+369 silly ADD
+370 silly ADD
+371 silly ADD
+372 silly ADD
+373 silly ADD
+374 silly ADD
+375 silly ADD
+376 silly ADD
+377 silly ADD
+378 silly ADD
+379 silly ADD
+380 silly ADD
+381 silly ADD
+382 silly ADD
+383 silly ADD
+384 verbose cwd /Users/anithalakshmipathy/Documents/hk-portfolio
+385 verbose os Darwin 25.0.0
+386 verbose node v22.15.1
+387 verbose npm  v10.9.2
+388 verbose exit 0
+389 info ok
