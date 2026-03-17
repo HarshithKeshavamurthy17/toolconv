@@ -27,3 +27,10 @@ dist-ssr
 .npm-cache
 
 
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.pkl
+data/processed/
+outputs/
