@@ -143,15 +143,18 @@ class SamplerAgent:
     seed     : Global RNG seed; individual calls accept per-call seeds.
     """
 
-    # Pattern type weights (probability of selecting each template)
+    # Pattern type weights for Run A (corpus_memory_enabled=False)
+    # sequential-heavy baseline as specified by the assessment.
     _PATTERN_WEIGHTS: dict[str, float] = {
-        "sequential":   0.55,
-        "parallel":     0.20,
-        "clarify_first": 0.25,
+        "sequential":    0.56,
+        "parallel":      0.24,
+        "clarify_first": 0.20,
     }
 
-    # Biased weights used when corpus_memory_enabled=True
-    # (clarify_first gets 2x weight to ensure measurably different diversity)
+    # Pattern type weights for Run B (corpus_memory_enabled=True)
+    # clarify_first gets 2× probability to ensure a measurably different
+    # pattern distribution — active from conversation 1, not just once
+    # corpus summaries accumulate.
     _CORPUS_PATTERN_WEIGHTS: dict[str, float] = {
         "sequential":    0.30,
         "parallel":      0.30,
