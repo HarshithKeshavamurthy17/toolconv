@@ -1,0 +1,321 @@
+[
+  {
+    "tool_name": "Open_Weather_Map",
+    "tool_description": "Access current weather data, forecasts, and historical weather for any location worldwide.",
+    "category": "Weather",
+    "api_list": [
+      {
+        "name": "get_current_weather",
+        "description": "Retrieve current weather conditions for a given city or coordinates.",
+        "required_parameters": [
+          {"name": "q", "type": "STRING", "description": "City name, e.g. 'London,UK'", "default": "London"}
+        ],
+        "optional_parameters": [
+          {"name": "units", "type": "STRING", "description": "Units: standard, metric, or imperial", "default": "metric"},
+          {"name": "lang", "type": "STRING", "description": "Language code for response", "default": "en"}
+        ]
+      },
+      {
+        "name": "get_5day_forecast",
+        "description": "Returns a 5-day weather forecast in 3-hour intervals for a specified city.",
+        "required_parameters": [
+          {"name": "q", "type": "STRING", "description": "City name", "default": "Paris"}
+        ],
+        "optional_parameters": [
+          {"name": "units", "type": "STRING", "description": "Units: standard, metric, or imperial", "default": "metric"},
+          {"name": "cnt", "type": "INTEGER", "description": "Number of timestamps to return (max 40)", "default": "40"}
+        ]
+      },
+      {
+        "name": "get_air_quality",
+        "description": "Retrieve Air Quality Index and pollutant concentrations for a location.",
+        "required_parameters": [
+          {"name": "lat", "type": "NUMBER", "description": "Latitude of the location", "default": "51.5074"},
+          {"name": "lon", "type": "NUMBER", "description": "Longitude of the location", "default": "-0.1278"}
+        ],
+        "optional_parameters": []
+      }
+    ]
+  },
+  {
+    "tool_name": "Skyscanner_Flights",
+    "tool_description": "Search for flights, compare prices, and retrieve airline schedules across hundreds of carriers.",
+    "category": "Travel",
+    "api_list": [
+      {
+        "name": "search_flights",
+        "description": "Search for available flights between two airports on a given date.",
+        "required_parameters": [
+          {"name": "origin", "type": "STRING", "description": "IATA code of the departure airport, e.g. LHR", "default": "LHR"},
+          {"name": "destination", "type": "STRING", "description": "IATA code of the arrival airport, e.g. JFK", "default": "JFK"},
+          {"name": "date", "type": "STRING", "description": "Departure date in YYYY-MM-DD format", "default": "2024-06-15"}
+        ],
+        "optional_parameters": [
+          {"name": "adults", "type": "INTEGER", "description": "Number of adult passengers", "default": "1"},
+          {"name": "cabin_class", "type": "STRING", "description": "Cabin class: economy, business, first", "default": "economy"},
+          {"name": "currency", "type": "STRING", "description": "Currency code for pricing", "default": "USD"}
+        ]
+      },
+      {
+        "name": "get_flight_details",
+        "description": "Retrieve detailed information about a specific flight by flight number.",
+        "required_parameters": [
+          {"name": "flight_id", "type": "STRING", "description": "Unique flight identifier returned by search_flights", "default": ""}
+        ],
+        "optional_parameters": [
+          {"name": "include_baggage", "type": "BOOLEAN", "description": "Include baggage allowance info", "default": "true"}
+        ]
+      },
+      {
+        "name": "get_cheapest_dates",
+        "description": "Find the cheapest travel dates for a given route within a date range.",
+        "required_parameters": [
+          {"name": "origin", "type": "STRING", "description": "IATA departure airport code", "default": "LAX"},
+          {"name": "destination", "type": "STRING", "description": "IATA arrival airport code", "default": "CDG"}
+        ],
+        "optional_parameters": [
+          {"name": "from_date", "type": "STRING", "description": "Search start date YYYY-MM-DD", "default": "2024-07-01"},
+          {"name": "to_date", "type": "STRING", "description": "Search end date YYYY-MM-DD", "default": "2024-07-31"},
+          {"name": "currency", "type": "STRING", "description": "Currency code", "default": "USD"}
+        ]
+      }
+    ]
+  },
+  {
+    "tool_name": "Booking_Hotels",
+    "tool_description": "Search hotels, check availability, and retrieve accommodation details from a global inventory.",
+    "category": "Travel",
+    "api_list": [
+      {
+        "name": "search_hotels",
+        "description": "Search for available hotels in a destination for specified check-in and check-out dates.",
+        "required_parameters": [
+          {"name": "destination", "type": "STRING", "description": "City or area name", "default": "Amsterdam"},
+          {"name": "checkin_date", "type": "STRING", "description": "Check-in date YYYY-MM-DD", "default": "2024-08-10"},
+          {"name": "checkout_date", "type": "STRING", "description": "Check-out date YYYY-MM-DD", "default": "2024-08-15"}
+        ],
+        "optional_parameters": [
+          {"name": "adults", "type": "INTEGER", "description": "Number of adult guests", "default": "2"},
+          {"name": "rooms", "type": "INTEGER", "description": "Number of rooms required", "default": "1"},
+          {"name": "min_star_rating", "type": "INTEGER", "description": "Minimum hotel star rating (1-5)", "default": "3"},
+          {"name": "currency", "type": "STRING", "description": "Currency code for prices", "default": "EUR"}
+        ]
+      },
+      {
+        "name": "get_hotel_details",
+        "description": "Retrieve amenities, photos, and reviews for a specific hotel.",
+        "required_parameters": [
+          {"name": "hotel_id", "type": "STRING", "description": "Unique hotel identifier from search results", "default": ""}
+        ],
+        "optional_parameters": [
+          {"name": "language", "type": "STRING", "description": "Language code for descriptions", "default": "en"}
+        ]
+      },
+      {
+        "name": "get_room_availability",
+        "description": "Check room types and availability for a hotel on specific dates.",
+        "required_parameters": [
+          {"name": "hotel_id", "type": "STRING", "description": "Hotel identifier", "default": ""},
+          {"name": "checkin_date", "type": "STRING", "description": "Check-in date YYYY-MM-DD", "default": ""},
+          {"name": "checkout_date", "type": "STRING", "description": "Check-out date YYYY-MM-DD", "default": ""}
+        ],
+        "optional_parameters": [
+          {"name": "adults", "type": "INTEGER", "description": "Number of guests", "default": "2"}
+        ]
+      }
+    ]
+  },
+  {
+    "tool_name": "Amazon_Product_Search",
+    "tool_description": "Search Amazon's product catalog, retrieve listings, prices, and reviews.",
+    "category": "Ecommerce",
+    "api_list": [
+      {
+        "name": "search_products",
+        "description": "Search for products on Amazon by keyword with optional category and price filters.",
+        "required_parameters": [
+          {"name": "query", "type": "STRING", "description": "Search keyword or product name", "default": "wireless headphones"}
+        ],
+        "optional_parameters": [
+          {"name": "category", "type": "STRING", "description": "Product category to filter results", "default": "Electronics"},
+          {"name": "min_price", "type": "NUMBER", "description": "Minimum price filter in USD", "default": "0"},
+          {"name": "max_price", "type": "NUMBER", "description": "Maximum price filter in USD", "default": "1000"},
+          {"name": "page", "type": "INTEGER", "description": "Page number for pagination", "default": "1"},
+          {"name": "sort_by", "type": "STRING", "description": "Sort order: relevance, price_asc, price_desc, rating", "default": "relevance"}
+        ]
+      },
+      {
+        "name": "get_product_details",
+        "description": "Get detailed information about a specific product including specifications and images.",
+        "required_parameters": [
+          {"name": "asin", "type": "STRING", "description": "Amazon Standard Identification Number (ASIN)", "default": "B08N5WRWNW"}
+        ],
+        "optional_parameters": [
+          {"name": "country", "type": "STRING", "description": "Amazon marketplace country code", "default": "US"}
+        ]
+      },
+      {
+        "name": "get_product_reviews",
+        "description": "Retrieve customer reviews and ratings for a product.",
+        "required_parameters": [
+          {"name": "asin", "type": "STRING", "description": "Amazon ASIN for the product", "default": "B08N5WRWNW"}
+        ],
+        "optional_parameters": [
+          {"name": "star_rating", "type": "STRING", "description": "Filter by star rating: all, 5, 4, 3, 2, 1", "default": "all"},
+          {"name": "page", "type": "INTEGER", "description": "Page number", "default": "1"},
+          {"name": "sort_by", "type": "STRING", "description": "Sort: recent, helpful", "default": "helpful"}
+        ]
+      },
+      {
+        "name": "check_price_history",
+        "description": "Get price history data for an Amazon product over the past 90 days.",
+        "required_parameters": [
+          {"name": "asin", "type": "STRING", "description": "Amazon ASIN", "default": ""}
+        ],
+        "optional_parameters": [
+          {"name": "days", "type": "INTEGER", "description": "Number of days of history to retrieve (max 90)", "default": "30"}
+        ]
+      }
+    ]
+  },
+  {
+    "tool_name": "Currency_Exchange",
+    "tool_description": "Real-time and historical currency exchange rates for 170+ currencies.",
+    "category": "Finance",
+    "api_list": [
+      {
+        "name": "get_exchange_rate",
+        "description": "Get the current exchange rate between two currencies.",
+        "required_parameters": [
+          {"name": "from_currency", "type": "STRING", "description": "Source currency ISO 4217 code, e.g. USD", "default": "USD"},
+          {"name": "to_currency", "type": "STRING", "description": "Target currency ISO 4217 code, e.g. EUR", "default": "EUR"}
+        ],
+        "optional_parameters": [
+          {"name": "amount", "type": "NUMBER", "description": "Amount to convert", "default": "1"}
+        ]
+      },
+      {
+        "name": "convert_currency",
+        "description": "Convert an amount from one currency to another using the latest exchange rate.",
+        "required_parameters": [
+          {"name": "amount", "type": "NUMBER", "description": "Amount to convert", "default": "100"},
+          {"name": "from_currency", "type": "STRING", "description": "Source currency code", "default": "USD"},
+          {"name": "to_currency", "type": "STRING", "description": "Target currency code", "default": "GBP"}
+        ],
+        "optional_parameters": [
+          {"name": "date", "type": "STRING", "description": "Historical rate date YYYY-MM-DD (omit for latest)", "default": ""}
+        ]
+      }
+    ]
+  },
+  {
+    "tool_name": "Google_Maps_Geocoding",
+    "tool_description": "Convert addresses to coordinates and vice versa, and look up place details.",
+    "category": "Travel",
+    "api_list": [
+      {
+        "name": "geocode_address",
+        "description": "Convert a human-readable address into geographic coordinates (latitude and longitude).",
+        "required_parameters": [
+          {"name": "address", "type": "STRING", "description": "Full address string to geocode", "default": "1600 Amphitheatre Parkway, Mountain View, CA"}
+        ],
+        "optional_parameters": [
+          {"name": "language", "type": "STRING", "description": "Language for results", "default": "en"},
+          {"name": "region", "type": "STRING", "description": "Region bias as ccTLD", "default": "us"}
+        ]
+      },
+      {
+        "name": "reverse_geocode",
+        "description": "Convert geographic coordinates into a human-readable address.",
+        "required_parameters": [
+          {"name": "lat", "type": "NUMBER", "description": "Latitude", "default": "37.4224764"},
+          {"name": "lng", "type": "NUMBER", "description": "Longitude", "default": "-122.0842499"}
+        ],
+        "optional_parameters": [
+          {"name": "language", "type": "STRING", "description": "Language for results", "default": "en"}
+        ]
+      },
+      {
+        "name": "get_directions",
+        "description": "Get turn-by-turn directions between two locations.",
+        "required_parameters": [
+          {"name": "origin", "type": "STRING", "description": "Starting location address or coordinates", "default": "New York, NY"},
+          {"name": "destination", "type": "STRING", "description": "Destination address or coordinates", "default": "Boston, MA"}
+        ],
+        "optional_parameters": [
+          {"name": "mode", "type": "STRING", "description": "Travel mode: driving, walking, bicycling, transit", "default": "driving"},
+          {"name": "avoid", "type": "STRING", "description": "Features to avoid: tolls, highways, ferries", "default": ""}
+        ]
+      }
+    ]
+  },
+  {
+    "tool_name": "Shopify_Products",
+    "tool_description": "Query Shopify-powered storefronts for product listings, inventory, and collections.",
+    "category": "Ecommerce",
+    "api_list": [
+      {
+        "name": "list_products",
+        "description": "Retrieve a paginated list of products from a Shopify store.",
+        "required_parameters": [
+          {"name": "store_domain", "type": "STRING", "description": "Shopify store domain, e.g. mystore.myshopify.com", "default": "example.myshopify.com"}
+        ],
+        "optional_parameters": [
+          {"name": "collection_id", "type": "STRING", "description": "Filter by collection ID", "default": ""},
+          {"name": "limit", "type": "INTEGER", "description": "Number of products per page (max 250)", "default": "50"},
+          {"name": "page_info", "type": "STRING", "description": "Cursor for pagination", "default": ""}
+        ]
+      },
+      {
+        "name": "get_product_by_id",
+        "description": "Get full details of a single product including variants and inventory levels.",
+        "required_parameters": [
+          {"name": "store_domain", "type": "STRING", "description": "Shopify store domain", "default": "example.myshopify.com"},
+          {"name": "product_id", "type": "STRING", "description": "Shopify product ID", "default": ""}
+        ],
+        "optional_parameters": []
+      }
+    ]
+  },
+  {
+    "tool_name": "Flight_Status_Tracker",
+    "tool_description": "Real-time flight status, delays, gate changes, and airport information.",
+    "category": "Travel",
+    "api_list": [
+      {
+        "name": "get_flight_status",
+        "description": "Get real-time status for a specific flight by flight number and date.",
+        "required_parameters": [
+          {"name": "flight_number", "type": "STRING", "description": "IATA flight number, e.g. BA142", "default": "BA142"},
+          {"name": "date", "type": "STRING", "description": "Flight date YYYY-MM-DD", "default": "2024-06-15"}
+        ],
+        "optional_parameters": [
+          {"name": "include_codeshares", "type": "BOOLEAN", "description": "Include codeshare flight info", "default": "false"}
+        ]
+      },
+      {
+        "name": "get_airport_info",
+        "description": "Retrieve airport details including terminals, gates, and nearby services.",
+        "required_parameters": [
+          {"name": "iata_code", "type": "STRING", "description": "3-letter IATA airport code", "default": "LHR"}
+        ],
+        "optional_parameters": [
+          {"name": "language", "type": "STRING", "description": "Response language code", "default": "en"}
+        ]
+      },
+      {
+        "name": "get_departures",
+        "description": "Get departure board for an airport within a time window.",
+        "required_parameters": [
+          {"name": "iata_code", "type": "STRING", "description": "Airport IATA code", "default": "JFK"},
+          {"name": "date", "type": "STRING", "description": "Date YYYY-MM-DD", "default": "2024-06-15"}
+        ],
+        "optional_parameters": [
+          {"name": "from_time", "type": "STRING", "description": "Start time HH:MM", "default": "06:00"},
+          {"name": "to_time", "type": "STRING", "description": "End time HH:MM", "default": "22:00"},
+          {"name": "limit", "type": "INTEGER", "description": "Max results", "default": "50"}
+        ]
+      }
+    ]
+  }
+]

@@ -7,6 +7,7 @@ Supported source formats
 - JSON file containing a list of tool objects
 - JSONL file (one tool object per line)
 - Directory of any of the above
+- ToolBench JSON format: { "tool_name": ..., "api_list": [...] }
 
 All raw payloads are passed through normalizer.normalize() before being
 stored, so the caller always receives provider-agnostic RegistryEntry objects.
@@ -24,6 +25,98 @@ from .normalizer import normalize
 
 logger = logging.getLogger(__name__)
 
+# ToolBench type → JSON Schema type mapping
+_TOOLBENCH_TYPE_MAP = {
+    "STRING": "string",
+    "NUMBER": "number",
+    "INTEGER": "integer",
+    "BOOLEAN": "boolean",
+    "OBJECT": "object",
+    "ARRAY": "array",
+}
+
+
+# ---------------------------------------------------------------------------
+# ToolBench format expansion
+# ---------------------------------------------------------------------------
+
+def _is_toolbench_format(data: dict) -> bool:
+    """Return True if the dict looks like a ToolBench tool file."""
+    return "tool_name" in data and "api_list" in data and isinstance(data["api_list"], list)
+
+
+def _toolbench_param_to_schema(param: dict) -> dict:
+    """Convert a ToolBench parameter dict to a JSON Schema property dict."""
+    raw_type = param.get("type", "STRING")
+    json_type = _TOOLBENCH_TYPE_MAP.get(str(raw_type).upper(), "string")
+    schema: dict = {"type": json_type}
+    desc = param.get("description", "")
+    if desc:
+        schema["description"] = str(desc)
+    default = param.get("default", "")
+    if default not in ("", None):
+        schema["example_value"] = default
+    return schema
+
+
+def _expand_toolbench(data: dict, source: str) -> Iterator[dict]:
+    """
+    Expand a ToolBench tool file into individual OpenAI-style tool dicts.
+
+    Each entry in api_list becomes one tool whose name is
+    ``<standardised_api_name>_for_<standardised_tool_name>``.
+    """
+    import re
+
+    def _standardize(s: str) -> str:
+        s = re.sub(r"[^a-zA-Z0-9_]", "_", s).lower()
+        s = re.sub(r"_+", "_", s).strip("_")
+        if s and s[0].isdigit():
+            s = "get_" + s
+        return s or "tool"
+
+    tool_name = data.get("tool_name", "unknown_tool")
+    tool_desc = data.get("tool_description", "")
+    std_tool = _standardize(tool_name)
+    category = data.get("category", "")
+    tags = [t for t in [category, "toolbench"] if t]
+
+    for api in data["api_list"]:
+        if not isinstance(api, dict) or not api.get("name"):
+            continue
+        api_name = _standardize(api["name"])
+        full_name = f"{api_name}_for_{std_tool}"[-64:]  # OpenAI name limit
+        description = (
+            f'Subfunction "{api["name"]}" of tool "{tool_name}".'
+        )
+        api_desc = api.get("description", "").strip()
+        if api_desc:
+            description += f" {api_desc}"
+
+        properties: dict = {}
+        required: list[str] = []
+
+        for param in api.get("required_parameters", []):
+            pname = _standardize(param.get("name", "param"))
+            properties[pname] = _toolbench_param_to_schema(param)
+            required.append(pname)
+
+        for param in api.get("optional_parameters", []):
+            pname = _standardize(param.get("name", "param"))
+            properties[pname] = _toolbench_param_to_schema(param)
+
+        yield {
+            "name": full_name,
+            "description": description,
+            "parameters": {
+                "type": "object",
+                "properties": properties,
+                "required": required,
+            },
+            "tags": tags,
+            "source": source,
+        }
+
 
 # ---------------------------------------------------------------------------
 # Low-level helpers
@@ -34,9 +127,16 @@ def _iter_json_file(path: Path) -> Iterator[dict]:
     with path.open(encoding="utf-8") as fh:
         data = json.load(fh)
     if isinstance(data, list):
-        yield from data
+        for item in data:
+            if isinstance(item, dict) and _is_toolbench_format(item):
+                yield from _expand_toolbench(item, str(path))
+            else:
+                yield item
     elif isinstance(data, dict):
-        yield data
+        if _is_toolbench_format(data):
+            yield from _expand_toolbench(data, str(path))
+        else:
+            yield data
     else:
         raise ValueError(f"{path}: expected a JSON object or array, got {type(data)}")
 
