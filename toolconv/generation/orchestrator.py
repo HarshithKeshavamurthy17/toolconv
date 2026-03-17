@@ -287,6 +287,7 @@ class Orchestrator:
             min_tools=cfg.min_tools,
             max_tools=cfg.max_tools,
             seed=seed,
+            corpus_memory_enabled=cfg.corpus_memory_enabled,
         )
 
         # ── Step 2: Plan conversation ──────────────────────────────────
