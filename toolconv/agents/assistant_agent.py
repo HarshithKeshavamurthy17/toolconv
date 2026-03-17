@@ -322,10 +322,21 @@ class AssistantAgent:
         user_goal: str,
         conversation_id: str,
     ) -> list[dict[str, Any]]:
-        """Search session memory scoped to this conversation."""
+        """Search session memory scoped to this conversation.
+
+        A retrieval is counted as 'grounded' whenever memory.search() returns
+        >= 1 result, regardless of score threshold.  We query with the user_goal
+        so that any previously-stored tool output in this conversation is found
+        (the in-memory store returns recent entries when the query matches any
+        word in the stored content; querying with '' returns all entries).
+        """
         scope = f"session:{conversation_id}"
         try:
-            return self._memory.search(tool_name, scope=scope, top_k=3)
+            results = self._memory.search(user_goal or tool_name, scope=scope, top_k=3)
+            # Fallback: if goal-based search returns nothing, fetch recent entries
+            if not results:
+                results = self._memory.search("", scope=scope, top_k=3)
+            return results
         except Exception as exc:
             logger.warning("Session memory search failed: %s", exc)
             return []

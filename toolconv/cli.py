@@ -165,9 +165,9 @@ def build(
 @click.option("--max-retries", default=3, show_default=True,
               help="Retries per conversation on validation failure.")
 @click.option(
-    "--no-corpus-memory", "corpus_memory_enabled",
-    is_flag=True, default=True, flag_value=False,
-    help="Disable corpus memory (diversity experiment run B).",
+    "--corpus-memory/--no-corpus-memory", "corpus_memory_enabled",
+    default=True,
+    help="Enable/disable corpus memory. Use --no-corpus-memory for diversity experiment run B.",
 )
 def generate(
     registry_path: str,

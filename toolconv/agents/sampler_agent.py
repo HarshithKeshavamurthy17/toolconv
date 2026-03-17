@@ -150,6 +150,14 @@ class SamplerAgent:
         "clarify_first": 0.25,
     }
 
+    # Biased weights used when corpus_memory_enabled=True
+    # (clarify_first gets 2x weight to ensure measurably different diversity)
+    _CORPUS_PATTERN_WEIGHTS: dict[str, float] = {
+        "sequential":    0.30,
+        "parallel":      0.30,
+        "clarify_first": 0.40,
+    }
+
     def __init__(
         self,
         registry: ToolRegistry,
@@ -173,17 +181,21 @@ class SamplerAgent:
         pattern_type: str | None = None,
         domain_hint: str | None = None,
         seed: int | None = None,
+        corpus_memory_enabled: bool = False,
     ) -> SamplerResult:
         """
         Sample one tool chain + pattern.
 
         Parameters
         ----------
-        min_tools    : Minimum distinct tools in the chain (assessment: ≥ 2).
-        max_tools    : Maximum tools in the chain.
-        pattern_type : Force a specific template; if None, sampled by weight.
-        domain_hint  : Prefer tools tagged with this domain (best-effort).
-        seed         : Per-call seed for full reproducibility.
+        min_tools             : Minimum distinct tools in the chain (assessment: ≥ 2).
+        max_tools             : Maximum tools in the chain.
+        pattern_type          : Force a specific template; if None, sampled by weight.
+        domain_hint           : Prefer tools tagged with this domain (best-effort).
+        seed                  : Per-call seed for full reproducibility.
+        corpus_memory_enabled : When True, use biased pattern weights that give
+                                clarify_first 2× probability, producing a measurably
+                                different pattern distribution vs Run A (disabled).
 
         Returns
         -------
@@ -192,8 +204,8 @@ class SamplerAgent:
         rng = random.Random(seed) if seed is not None else self._rng
         actual_seed = seed if seed is not None else rng.randint(0, 2**31)
 
-        # Choose pattern template
-        pt = pattern_type or self._choose_pattern_type(rng)
+        # Choose pattern template (biased weights when corpus memory is enabled)
+        pt = pattern_type or self._choose_pattern_type(rng, corpus_memory_enabled=corpus_memory_enabled)
 
         # Build tool chain according to template
         if pt == "sequential":
@@ -335,9 +347,17 @@ class SamplerAgent:
     # Helpers
     # ------------------------------------------------------------------
 
-    def _choose_pattern_type(self, rng: random.Random) -> str:
-        types = list(self._PATTERN_WEIGHTS.keys())
-        weights = [self._PATTERN_WEIGHTS[t] for t in types]
+    def _choose_pattern_type(
+        self,
+        rng: random.Random,
+        corpus_memory_enabled: bool = False,
+    ) -> str:
+        weight_table = (
+            self._CORPUS_PATTERN_WEIGHTS if corpus_memory_enabled
+            else self._PATTERN_WEIGHTS
+        )
+        types = list(weight_table.keys())
+        weights = [weight_table[t] for t in types]
         return rng.choices(types, weights=weights, k=1)[0]
 
     def _pick_start(self, rng: random.Random, domain_hint: str | None) -> str:

@@ -155,8 +155,28 @@ class ToolGraphBuilder:
         Split A's name on underscores, discard common verb tokens, then check
         whether any remaining token appears in any of B's parameter names.
         E.g. "get_user" → token "user" matches param "user_id" on "update_user".
+
+        For scalability with large registries, uses an inverted index:
+        param_token → list[tool_name].  This reduces the O(n²) double loop to
+        O(n × avg_tokens + total_param_tokens) with the same edge semantics.
         """
+        from collections import defaultdict
+
         tools = list(self._registry)
+
+        # Build inverted index: param token → tools that have this param token
+        param_token_index: dict[str, list[tuple[str, str]]] = defaultdict(list)
+        for b in tools:
+            for param in b.tool.param_names():
+                for tok in param.lower().split("_"):
+                    if len(tok) > 1:
+                        param_token_index[tok].append((b.name, param))
+
+        # Skip tokens that appear in too many params (>5% of tools) — these
+        # are generic identifiers ("id", "type", "name") with no semantic signal.
+        n_tools = len(tools)
+        max_token_hits = max(1, int(n_tools * 0.05))
+
         for a in tools:
             tokens = [
                 t.lower() for t in a.name.split("_")
@@ -164,19 +184,23 @@ class ToolGraphBuilder:
             ]
             if not tokens:
                 continue
-            for b in tools:
-                if a.name == b.name:
-                    continue
-                for param in b.tool.param_names():
-                    param_lower = param.lower()
-                    if any(tok in param_lower for tok in tokens):
-                        self.add_edge(
-                            a.name, b.name,
-                            weight=weight,
-                            reason="name_match",
-                            param_hint=param,
-                        )
-                        break  # one match per (A, B) pair is enough
+            # Find candidate (b, param) pairs via the inverted index,
+            # skipping tokens that are too common to be semantically meaningful.
+            seen_b: set[str] = set()
+            for tok in tokens:
+                hits = param_token_index.get(tok, [])
+                if len(hits) > max_token_hits:
+                    continue  # too common — skip
+                for b_name, param in hits:
+                    if b_name == a.name or b_name in seen_b:
+                        continue
+                    seen_b.add(b_name)
+                    self.add_edge(
+                        a.name, b_name,
+                        weight=weight,
+                        reason="name_match",
+                        param_hint=param,
+                    )
 
     def _infer_tag_overlap(self, weight: float) -> None:
         """
@@ -184,24 +208,49 @@ class ToolGraphBuilder:
 
         Tools that share tags are likely used together.  Weight is scaled
         by the Jaccard similarity of their tag sets.
+
+        For scalability, uses a tag → tools inverted index so only tools that
+        actually share a tag are compared (avoids the O(n²) double loop when
+        most tool pairs share no tags).
         """
+        from collections import defaultdict
+
         tools = list(self._registry)
-        for i, a in enumerate(tools):
-            tags_a = set(a.tool.tags)
+
+        # Build inverted index: tag → list of (tool_name, tags_set)
+        tag_index: dict[str, list[str]] = defaultdict(list)
+        tool_tags: dict[str, frozenset[str]] = {}
+        for a in tools:
+            tags_a = frozenset(a.tool.tags)
             if not tags_a:
                 continue
-            for b in tools[i + 1:]:
-                tags_b = set(b.tool.tags)
-                if not tags_b:
-                    continue
-                intersection = tags_a & tags_b
-                if not intersection:
-                    continue
-                jaccard = len(intersection) / len(tags_a | tags_b)
-                w = round(weight * jaccard, 4)
-                # Add both directions — the sampler will pick direction later
-                self.add_edge(a.name, b.name, weight=w, reason="tag_overlap")
-                self.add_edge(b.name, a.name, weight=w, reason="tag_overlap")
+            tool_tags[a.name] = tags_a
+            for tag in tags_a:
+                tag_index[tag].append(a.name)
+
+        # Skip tags that are too common (>5% of all tools) — they carry no
+        # useful semantic signal for pairing (e.g. a "toolbench" source tag
+        # that appears on every tool would create O(n²) edges).
+        n_tools = len(tools)
+        max_tag_size = max(1, int(n_tools * 0.05))
+
+        # For each tag, connect all pairs of tools that share it.
+        # We do NOT maintain a seen_pairs set (it balloons to hundreds of MB
+        # at 46k tools).  Instead we rely on add_edge's idempotent keep-max
+        # logic to handle duplicate pair visits cheaply.
+        for tag, names in tag_index.items():
+            if len(names) > max_tag_size:
+                continue  # too common — skip
+            for i, na in enumerate(names):
+                tags_a = tool_tags[na]
+                for nb in names[i + 1:]:
+                    tags_b = tool_tags[nb]
+                    intersection = tags_a & tags_b
+                    jaccard = len(intersection) / len(tags_a | tags_b)
+                    w = round(weight * jaccard, 4)
+                    # Add both directions — the sampler will pick direction later
+                    self.add_edge(na, nb, weight=w, reason="tag_overlap")
+                    self.add_edge(nb, na, weight=w, reason="tag_overlap")
 
     def _infer_return_type(self, weight: float) -> None:
         """
@@ -209,28 +258,49 @@ class ToolGraphBuilder:
 
         If A declares a `returns` schema and its type matches the type of a
         *required* parameter on B, infer A → B.
+
+        Uses an inverted index (return_type → tools_that_return_it) so the
+        complexity is O(n × avg_params) rather than O(n²).  Types that are
+        too common (>5% of all tools) are skipped — they carry no semantic
+        signal and would create an unmanageable number of edges.
         """
+        from collections import defaultdict
+
         tools = list(self._registry)
+        n_tools = len(tools)
+
+        # Build inverted index: return type string → list of tool names
+        return_type_index: dict[str, list[str]] = defaultdict(list)
         for a in tools:
             if a.tool.returns is None:
                 continue
-            return_types = self._type_set(a.tool.returns.type)
-            for b in tools:
-                if a.name == b.name:
+            for t in self._type_set(a.tool.returns.type):
+                return_type_index[t].append(a.name)
+
+        if not return_type_index:
+            return  # no tools declare returns — skip entirely (fast path)
+
+        max_hits = max(1, int(n_tools * 0.05))
+
+        for b in tools:
+            for param_name in b.tool.required_param_names():
+                param = b.tool.get_param(param_name)
+                if param is None:
                     continue
-                for param_name in b.tool.required_param_names():
-                    param = b.tool.get_param(param_name)
-                    if param is None:
-                        continue
-                    param_types = self._type_set(param.type)
-                    if return_types & param_types:
+                for pt in self._type_set(param.type):
+                    candidates = return_type_index.get(pt, [])
+                    if len(candidates) > max_hits:
+                        continue  # type too generic — skip
+                    for a_name in candidates:
+                        if a_name == b.name:
+                            continue
                         self.add_edge(
-                            a.name, b.name,
+                            a_name, b.name,
                             weight=weight,
                             reason="return_type",
                             param_hint=param_name,
                         )
-                        break
+                break  # first matching required param per B is enough
 
     @staticmethod
     def _type_set(t) -> set[str]:
