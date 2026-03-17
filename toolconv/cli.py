@@ -253,9 +253,10 @@ def generate(
 # ---------------------------------------------------------------------------
 
 @main.command()
+@click.argument("input_arg", required=False, default=None)
 @click.option(
-    "--input", "-i", "input_path",
-    required=True,
+    "--input", "-i", "input_opt",
+    default=None,
     help="Path to JSONL file produced by `generate`.",
 )
 @click.option(
@@ -267,10 +268,14 @@ def generate(
     help="Minimum required distinct tools per conversation.",
 )
 def validate(
-    input_path: str,
+    input_arg: str | None,
+    input_opt: str | None,
     min_tool_calls: int,
     min_distinct_tools: int,
 ) -> None:
+    input_path = input_opt or input_arg
+    if not input_path:
+        raise click.UsageError("Provide the JSONL path as an argument or via --input.")
     """Validate every record in a JSONL file against all hard requirements."""
     from toolconv.agents.validator_agent import ValidatorAgent
 
@@ -329,17 +334,28 @@ def validate(
 # ---------------------------------------------------------------------------
 
 @main.command()
+@click.argument("input_arg", required=False, default=None)
+@click.argument("compare_arg", required=False, default=None)
 @click.option(
-    "--input", "-i", "input_path",
-    required=True,
+    "--input", "-i", "input_opt",
+    default=None,
     help="Primary JSONL file (Run A).",
 )
 @click.option(
-    "--compare", "-c", "compare_path",
+    "--compare", "-c", "compare_opt",
     default=None,
     help="Optional second JSONL file (Run B) for side-by-side comparison.",
 )
-def metrics(input_path: str, compare_path: str | None) -> None:
+def metrics(
+    input_arg: str | None,
+    compare_arg: str | None,
+    input_opt: str | None,
+    compare_opt: str | None,
+) -> None:
+    input_path = input_opt or input_arg
+    compare_path = compare_opt or compare_arg
+    if not input_path:
+        raise click.UsageError("Provide the primary JSONL path as an argument or via --input.")
     """Compute diversity metrics; optionally compare two runs (A vs B)."""
     from toolconv.metrics.dataset_metrics import compute_dataset_metrics
     from toolconv.metrics.diversity import compute_diversity_metrics
