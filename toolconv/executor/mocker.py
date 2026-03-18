@@ -288,10 +288,17 @@ class ToolMocker:
             return self._mock_error(tool)
 
         if tool.returns is not None:
-            result = _mock_value(tool.name, tool.returns, self._fake, self._rng)
+            base_result = _mock_value(tool.name, tool.returns, self._fake, self._rng)
         else:
             # Infer a plausible return object from the tool's own parameters
-            result = self._infer_return(tool)
+            base_result = self._infer_return(tool)
+
+        # Echo inputs first, then overlay generated fields for any missing keys
+        if isinstance(base_result, dict):
+            result: Any = dict(call_args or {})
+            result.update({k: v for k, v in base_result.items() if k not in result})
+        else:
+            result = base_result
 
         if partial and isinstance(result, dict) and len(result) > 1:
             # Drop ~half the keys to simulate partial response

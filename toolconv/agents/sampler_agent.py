@@ -143,11 +143,22 @@ class SamplerAgent:
     seed     : Global RNG seed; individual calls accept per-call seeds.
     """
 
-    # Pattern type weights (probability of selecting each template)
+    # Pattern type weights for Run A (corpus_memory_enabled=False)
+    # sequential-heavy baseline as specified by the assessment.
+    # "parallel" has been merged into "sequential" (parallel weight 0.24 added).
     _PATTERN_WEIGHTS: dict[str, float] = {
-        "sequential":   0.55,
-        "parallel":     0.20,
-        "clarify_first": 0.25,
+        "sequential":    0.80,
+        "clarify_first": 0.20,
+    }
+
+    # Pattern type weights for Run B (corpus_memory_enabled=True)
+    # clarify_first gets 2× probability to ensure a measurably different
+    # pattern distribution — active from conversation 1, not just once
+    # corpus summaries accumulate.
+    # "parallel" has been merged into "sequential" (parallel weight 0.30 added).
+    _CORPUS_PATTERN_WEIGHTS: dict[str, float] = {
+        "sequential":    0.60,
+        "clarify_first": 0.40,
     }
 
     def __init__(
@@ -173,17 +184,21 @@ class SamplerAgent:
         pattern_type: str | None = None,
         domain_hint: str | None = None,
         seed: int | None = None,
+        corpus_memory_enabled: bool = False,
     ) -> SamplerResult:
         """
         Sample one tool chain + pattern.
 
         Parameters
         ----------
-        min_tools    : Minimum distinct tools in the chain (assessment: ≥ 2).
-        max_tools    : Maximum tools in the chain.
-        pattern_type : Force a specific template; if None, sampled by weight.
-        domain_hint  : Prefer tools tagged with this domain (best-effort).
-        seed         : Per-call seed for full reproducibility.
+        min_tools             : Minimum distinct tools in the chain (assessment: ≥ 2).
+        max_tools             : Maximum tools in the chain.
+        pattern_type          : Force a specific template; if None, sampled by weight.
+        domain_hint           : Prefer tools tagged with this domain (best-effort).
+        seed                  : Per-call seed for full reproducibility.
+        corpus_memory_enabled : When True, use biased pattern weights that give
+                                clarify_first 2× probability, producing a measurably
+                                different pattern distribution vs Run A (disabled).
 
         Returns
         -------
@@ -192,14 +207,12 @@ class SamplerAgent:
         rng = random.Random(seed) if seed is not None else self._rng
         actual_seed = seed if seed is not None else rng.randint(0, 2**31)
 
-        # Choose pattern template
-        pt = pattern_type or self._choose_pattern_type(rng)
+        # Choose pattern template (biased weights when corpus memory is enabled)
+        pt = pattern_type or self._choose_pattern_type(rng, corpus_memory_enabled=corpus_memory_enabled)
 
         # Build tool chain according to template
         if pt == "sequential":
             result = self._sample_sequential(rng, min_tools, max_tools, domain_hint)
-        elif pt == "parallel":
-            result = self._sample_parallel(rng, min_tools, max_tools, domain_hint)
         else:  # clarify_first
             result = self._sample_clarify_first(rng, min_tools, max_tools, domain_hint)
 
@@ -335,9 +348,17 @@ class SamplerAgent:
     # Helpers
     # ------------------------------------------------------------------
 
-    def _choose_pattern_type(self, rng: random.Random) -> str:
-        types = list(self._PATTERN_WEIGHTS.keys())
-        weights = [self._PATTERN_WEIGHTS[t] for t in types]
+    def _choose_pattern_type(
+        self,
+        rng: random.Random,
+        corpus_memory_enabled: bool = False,
+    ) -> str:
+        weight_table = (
+            self._CORPUS_PATTERN_WEIGHTS if corpus_memory_enabled
+            else self._PATTERN_WEIGHTS
+        )
+        types = list(weight_table.keys())
+        weights = [weight_table[t] for t in types]
         return rng.choices(types, weights=weights, k=1)[0]
 
     def _pick_start(self, rng: random.Random, domain_hint: str | None) -> str:
