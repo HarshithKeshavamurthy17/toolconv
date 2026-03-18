@@ -60,11 +60,13 @@ class Message(BaseModel):
 class ToolCall(BaseModel):
     endpoint_id: str
     arguments: dict[str, Any] = Field(default_factory=dict)
+    step: int = 0
 
 
 class ToolOutput(BaseModel):
     endpoint_id: str
     output: Any = None
+    step: int = 0
 
 
 class ConversationMetadata(BaseModel):
@@ -216,11 +218,19 @@ def assemble_from_agents(
         all_messages.extend(user_messages[:1])   # opening message first
     all_messages.extend(assistant_result.messages)
 
+    # Inject 0-based step index into tool_calls and tool_outputs
+    tool_calls_with_step = [
+        {**tc, "step": i} for i, tc in enumerate(assistant_result.tool_calls)
+    ]
+    tool_outputs_with_step = [
+        {**to, "step": i} for i, to in enumerate(assistant_result.tool_outputs)
+    ]
+
     return assemble(
         conversation_id=state.conversation_id,
         messages=all_messages,
-        tool_calls=assistant_result.tool_calls,
-        tool_outputs=assistant_result.tool_outputs,
+        tool_calls=tool_calls_with_step,
+        tool_outputs=tool_outputs_with_step,
         seed=seed,
         tool_ids_used=list(dict.fromkeys(state.all_tool_names)),  # unique, ordered
         num_turns=state.n_turns,

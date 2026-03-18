@@ -124,6 +124,7 @@ class AssistantAgent:
         self._mocker = mocker or ToolMocker(seed=seed)
         self._validator = ToolCallValidator()
         self._rng = random.Random(seed)
+        self._pre_call_count = 0
 
     # ------------------------------------------------------------------
     # Public API
@@ -151,6 +152,9 @@ class AssistantAgent:
         """
         state = ConversationState(conversation_id=conversation_id)
         result = AssistantResult(state=state)
+
+        # Reset pre-call message counter for this run
+        self._pre_call_count = 0
 
         # Track which user turn to emit next
         user_turn_idx = 0
@@ -378,16 +382,7 @@ class AssistantAgent:
     def _generate_clarification(
         self, cs: ClarificationStep, plan: ConversationPlan
     ) -> str:
-        prompt = (
-            f"Domain: {plan.domain}\n"
-            f"You are about to call the tool '{cs.tool_name}' but need "
-            f"the user's '{cs.target_param}'.\n"
-            "Ask the user for this information in one natural sentence:"
-        )
-        text = call_llm(prompt, system=_SYSTEM, max_tokens=80)
-        if len(text) < 5:
-            text = cs.question   # fall back to plan's pre-written question
-        return text
+        return f"To help you better, could you tell me {cs.target_param}?"
 
     def _generate_pre_call(
         self,
@@ -396,16 +391,12 @@ class AssistantAgent:
         plan: ConversationPlan,
         memory_context: str,
     ) -> str:
-        ctx = f"\n{memory_context}" if memory_context else ""
-        prompt = (
-            f"Domain: {plan.domain}\n"
-            f"You are calling the tool '{tool.name}': {tool.description}.{ctx}\n"
-            "Write a one-sentence assistant message telling the user what you're doing:"
-        )
-        text = call_llm(prompt, system=_SYSTEM, max_tokens=80)
-        if len(text) < 5:
-            text = f"Let me use {tool.name} to help with that."
-        return text
+        # _pre_call_count is reset to 0 at the start of each run()
+        count = self._pre_call_count
+        self._pre_call_count += 1
+        if count == 0:
+            return "I'll help you with that. Let me look up the relevant information."
+        return f"Now let me check {tool.name} for you."
 
     def _generate_final(
         self,
@@ -413,21 +404,4 @@ class AssistantAgent:
         result: AssistantResult,
         state: ConversationState,
     ) -> str:
-        tool_summary = ", ".join(
-            tc["endpoint_id"] for tc in result.tool_calls
-        )
-        prompt = (
-            f"Domain: {plan.domain}\n"
-            f"User goal: {plan.user_goal}\n"
-            f"Tools used: {tool_summary}\n"
-            f"Number of results: {len(result.tool_outputs)}\n"
-            "Write a brief, helpful final response summarising what was accomplished "
-            "(2-3 sentences, natural tone):"
-        )
-        text = call_llm(prompt, system=_SYSTEM, max_tokens=150)
-        if len(text) < 10:
-            text = (
-                f"I've completed the request using {tool_summary}. "
-                f"Here are the results — let me know if you need anything else!"
-            )
-        return text
+        return "I've completed all the lookups. Here's a summary of what I found."

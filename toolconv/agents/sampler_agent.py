@@ -145,9 +145,9 @@ class SamplerAgent:
 
     # Pattern type weights for Run A (corpus_memory_enabled=False)
     # sequential-heavy baseline as specified by the assessment.
+    # "parallel" has been merged into "sequential" (parallel weight 0.24 added).
     _PATTERN_WEIGHTS: dict[str, float] = {
-        "sequential":    0.56,
-        "parallel":      0.24,
+        "sequential":    0.80,
         "clarify_first": 0.20,
     }
 
@@ -155,9 +155,9 @@ class SamplerAgent:
     # clarify_first gets 2× probability to ensure a measurably different
     # pattern distribution — active from conversation 1, not just once
     # corpus summaries accumulate.
+    # "parallel" has been merged into "sequential" (parallel weight 0.30 added).
     _CORPUS_PATTERN_WEIGHTS: dict[str, float] = {
-        "sequential":    0.30,
-        "parallel":      0.30,
+        "sequential":    0.60,
         "clarify_first": 0.40,
     }
 
@@ -213,8 +213,6 @@ class SamplerAgent:
         # Build tool chain according to template
         if pt == "sequential":
             result = self._sample_sequential(rng, min_tools, max_tools, domain_hint)
-        elif pt == "parallel":
-            result = self._sample_parallel(rng, min_tools, max_tools, domain_hint)
         else:  # clarify_first
             result = self._sample_clarify_first(rng, min_tools, max_tools, domain_hint)
 
